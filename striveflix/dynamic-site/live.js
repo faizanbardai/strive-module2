@@ -156,13 +156,9 @@ function selectSection(element) {
 }
 
 function textSearch(event) {
-    console.log(event)
-       
-    if(event.keyCode === 32) {   
+    if(event.target.value.length > 2) {
       emptyMoviesContent ()
-      var searchString = event.target.value;
-      searchString = searchString.substring(0, searchString.length - 1);
-      getMovies(render, { text: searchString})
+      getMovies(render, { text: event.target.value})
     } 
 }
 
