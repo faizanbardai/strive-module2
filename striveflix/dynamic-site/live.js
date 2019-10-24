@@ -79,10 +79,11 @@ function getMovies(callback, options) {
     if (options && options.text) {
       movies = movies.filter(function(movie){
         // TODO: put your logic here
+        return (movie.title === options.text)
       })
     }
     callback(movies)
-  }, 2000)
+  }, 800)
 }
 
 /**
@@ -155,7 +156,14 @@ function selectSection(element) {
 }
 
 function textSearch(event) {
-  getMovies(render, { text: event.target.value})
+    console.log(event)
+       
+    if(event.keyCode === 32) {   
+      emptyMoviesContent ()
+      var searchString = event.target.value;
+      searchString = searchString.substring(0, searchString.length - 1);
+      getMovies(render, { text: searchString})
+    } 
 }
 
 /**
