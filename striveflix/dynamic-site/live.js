@@ -72,6 +72,8 @@ function getMovies(callback, options) {
   setTimeout(function() {
     var movies = MOVIES
     if (options && options.category) {
+      console.log(options)
+      console.log(options.category)
       movies = movies.filter(function(movie){
         return (movie.category === options.category)
       })
@@ -156,7 +158,7 @@ function selectSection(element) {
 }
 
 function textSearch(event) {
-    if(event.target.value.length > 2) {
+    if(event.keyCode == 13) {
       emptyMoviesContent ()
       getMovies(render, { text: event.target.value})
     } 
